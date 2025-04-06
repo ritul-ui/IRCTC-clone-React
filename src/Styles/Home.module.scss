@@ -77,8 +77,10 @@
     color: #666;
   }
   
-  .swapButton:hover {
+  .swapButton {
+    &:hover{
     color: #333;
+    }
   }
   
   .checkboxGroup {
@@ -115,8 +117,10 @@
     color: white;
   }
   
-  .searchButton:hover {
+  .searchButton{
+    &:hover{
     background-color: #c0392b;
+    }
   }
   
   .askDishaButton {
@@ -124,8 +128,10 @@
     color: white;
   }
   
-  .askDishaButton:hover {
+  .askDishaButton{
+    &:hover{
     background-color: #2980b9;
+    }
   }
   
   @media (max-width: 768px) {

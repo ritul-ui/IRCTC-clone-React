@@ -28,9 +28,11 @@
     transition: 0.3s;
 }
 
-.icon:hover {
+.icon {
+    &:hover{
     transform: scale(1.1);
     color: #ffcc00;
+    }
 }
 
 /* Footer Links */
@@ -51,6 +53,10 @@
     padding-bottom: 5px;
 }
 
-.footerLinks h4:hover {
-    border-bottom: 1px solid #ffcc00;
+.footerLinks  {
+    & h4 {
+        &:hover{
+            border-bottom: 1px solid #ffcc00;
+        }
+    }
 }

@@ -34,8 +34,10 @@
     transition: color 0.2s ease;
   }
   
-  .homeIcon:hover {
+  .homeIcon{
+    &:hover{
     color: #ffcc00;
+    }
   }
   
   .logo {
@@ -55,8 +57,10 @@
     transition: color 0.2s ease;
   }
   
-  .navLink:hover {
+  .navLink {
+    &:hover{
     color: #ffcc00;
+    }
   }
   
   .icon {
@@ -65,8 +69,10 @@
     transition: color 0.2s ease;
   }
   
-  .icon:hover {
+  .icon{
+    &:hover{
     color: #ffcc00;
+    }
   }
   
   .authButton,
@@ -85,11 +91,15 @@
     background-color: green;
   }
   
-  .authButton:hover {
+  .authButton {
+    &:hover{
     background-color: darkorange;
+    }
   }
   
-  .registerButton:hover {
+  .registerButton{
+    &:hover{
     background-color: darkgreen;
+    }
   }
  

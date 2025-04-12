@@ -21,7 +21,7 @@ const RouteContentManager = () => {
           <TrainCarousel />
         </>
       )}
-      <Routes>
+      <Routes>  
         <Route path="/" element={null} />
         <Route 
           path="/booking" 

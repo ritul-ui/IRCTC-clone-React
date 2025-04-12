@@ -2,12 +2,32 @@
 import React, { useState } from "react";
 import styles from "../Styles/AuthModal.module.scss";
 import { FcGoogle } from "react-icons/fc";
+import { loginWithEmail } from "../Config/AuthService";
 
 const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   if (!isOpen) return null;
+
+  const handleEmailLogin = async () => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    
+    try {
+      const user = await loginWithEmail(email, password);
+      setEmail("");
+      setPassword("");
+      if (onLogin) onLogin();
+      onClose();
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className={`${styles.overlay} ${isOpen ? styles.show : ""}`} onClick={onClose}>
@@ -15,7 +35,7 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
         <button className={styles.closeBtn} onClick={onClose}>X</button>
         <h2>Login</h2>
 
-        <form>
+        <form onSubmit={handleEmailLogin}>
           <input 
             type="email" 
             placeholder="Email" 

@@ -2,13 +2,35 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import styles from "../Styles/AuthModal.module.scss";
+import { registerWithEmail } from "../Config/AuthService";
 
 const RegisterModal = ({ isOpen, onClose, switchToLogin }) => {
+  // console.log("register");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   if (!isOpen) return null;
+
+
+  const handleRegisteration = async (e) => {
+    console.log("register");
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    
+    try {
+      await registerWithEmail(email, password, fullName);
+      setEmail("");
+      setPassword("");
+      onClose();
+      switchToLogin();
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={`${styles.overlay} ${isOpen ? styles.show : ""}`} onClick={onClose}>
@@ -16,7 +38,8 @@ const RegisterModal = ({ isOpen, onClose, switchToLogin }) => {
         <button className={styles.closeBtn} onClick={onClose}>X</button>
         <h2>Register</h2>
 
-        <form>
+        <form onSubmit={handleRegisteration}>
+          <input type="text" />
           <input 
             type="text" 
             placeholder="Full Name" 

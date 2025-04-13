@@ -4,13 +4,18 @@ import styles from "../Styles/Navbar.module.scss";
 import { FaBell, FaQuestionCircle, FaHome } from "react-icons/fa";
 import LoginModal from "../pages/LoginModal";
 import RegisterModal from "../pages/RegisterModal";
+import { useAuth } from "../Context/AuthContext";
+import { logout } from "../Config/AuthService";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const {setIsLoggedIn, isLoggedIn} = useAuth(); // Accessing login state from AuthContext
+  console.log("isLoggedIn", isLoggedIn);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Tracks login state
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); // Tracks login state
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,6 +31,11 @@ const Navbar = () => {
       setIsLoginOpen(true); // Open login modal if not logged in
     }
   };
+
+  const handleLogout = async () => {  
+        await logout(); // Call the logout function from AuthService
+        setIsLoggedIn(false); // Update the login state in AuthContext
+  }
 
   return (
     <>
@@ -50,7 +60,7 @@ const Navbar = () => {
 
           {/* Authentication Buttons */}
           {isLoggedIn ? (
-            <button className={styles.authButton} onClick={() => setIsLoggedIn(false)}>LOGOUT</button>
+            <button className={styles.authButton} onClick={handleLogout}>LOGOUT</button>
           ) : (
             <>
               <button className={styles.authButton} onClick={() => setIsLoginOpen(true)}>LOGIN</button>
@@ -74,6 +84,7 @@ const Navbar = () => {
       <RegisterModal 
         isOpen={isRegisterOpen}
         onClose={() => setIsRegisterOpen(false)}
+        onLogin={() => setIsLoggedIn(true)} 
         switchToLogin={() => {
           setIsRegisterOpen(false);
           setIsLoginOpen(true);

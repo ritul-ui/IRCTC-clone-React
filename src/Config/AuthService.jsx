@@ -4,7 +4,8 @@ import {
     signOut, 
     signInWithPopup,
     onAuthStateChanged,
-    updateProfile 
+    updateProfile ,
+    GoogleAuthProvider
   } from "firebase/auth";
   import { auth } from "../Config/FirebaseConfig";
   
@@ -13,6 +14,7 @@ import {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log("user", userCredential);
+      // Update profile with the user's name
       await updateProfile(userCredential.user, {
         displayName: fullName
       });                                    
@@ -32,4 +34,28 @@ import {
     }
   };
   
+  // Login with Google
+  export const loginWithGoogle = async () => {
+    try {
+        const googleProvider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log("loginWithGoogle", result);
+      return result.user;
+    } catch (error) {
+      throw error;
+    }
+  };
   
+  // Logout
+  export const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      throw error;
+    }
+  };
+  
+  // Auth state observer
+  export const observeAuthState = (callback) => {
+    return onAuthStateChanged(auth, callback); 
+  };

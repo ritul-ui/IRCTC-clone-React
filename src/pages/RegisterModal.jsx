@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import styles from "../Styles/AuthModal.module.scss";
-import { registerWithEmail } from "../Config/AuthService";
+import { registerWithEmail, loginWithGoogle } from "../Config/AuthService";
 
-const RegisterModal = ({ isOpen, onClose, switchToLogin }) => {
+const RegisterModal = ({ isOpen, onClose, switchToLogin , onLogin}) => {
   // console.log("register");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
 
@@ -19,12 +22,33 @@ const RegisterModal = ({ isOpen, onClose, switchToLogin }) => {
     setError("");
     setLoading(true);
     
+    // startTransition(async () => {
     try {
       await registerWithEmail(email, password, fullName);
       setEmail("");
       setPassword("");
+      setFullName("");
       onClose();
       switchToLogin();
+    } catch (error) {
+    console.log("error", error);
+    setError(error.message);
+    } 
+    finally {
+      setLoading(false);
+    }
+  // });
+  };
+
+
+  const handleGoogleRegister = async () => {
+    setError("");
+    setLoading(true);
+    
+    try {
+      await loginWithGoogle();
+      if (onLogin) onLogin();
+      onClose();
     } catch (error) {
       setError(error.message);
     } finally {
@@ -37,9 +61,8 @@ const RegisterModal = ({ isOpen, onClose, switchToLogin }) => {
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeBtn} onClick={onClose}>X</button>
         <h2>Register</h2>
-
+        {error && <p className={styles.error}>{error}</p>}
         <form onSubmit={handleRegisteration}>
-          <input type="text" />
           <input 
             type="text" 
             placeholder="Full Name" 
@@ -61,10 +84,15 @@ const RegisterModal = ({ isOpen, onClose, switchToLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
             required 
           />
-          <button type="button">Register</button>
+           <button type="submit" disabled={loading}>
+            {loading ? "Registering..." : "Register"}
+          </button>
         </form>
 
-        <button className={styles.googleBtn}>
+        <button type="button" className={styles.googleBtn}
+         onClick={handleGoogleRegister}
+         disabled={loading}
+         >
           <FcGoogle /> Register with Google
         </button>
 

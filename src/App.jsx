@@ -7,6 +7,8 @@ import ContactPage from "./pages/ContactPage";
 import LoginModal from "./pages/LoginModal";
 import TrainCarousel from "./Components/TrainCarousel";
 import styles from "./Styles/App.module.scss";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import { AuthProvider } from "./Context/AuthContext";
 
 
 // Component to conditionally render content based on route
@@ -25,7 +27,11 @@ const RouteContentManager = () => {
         <Route path="/" element={null} />
         <Route 
           path="/booking" 
-          element={<BookingPage />} 
+          element={
+            <ProtectedRoute>
+          <BookingPage />
+          </ProtectedRoute>
+        } 
         />
         <Route path="/contact" element={<ContactPage />} />
         <Route 
@@ -46,6 +52,7 @@ const RouteContentManager = () => {
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <div className={styles.app}>
         <Navbar />
@@ -53,6 +60,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 

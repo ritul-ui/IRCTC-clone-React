@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { replace, useNavigate } from "react-router-dom";
 import styles from "../Styles/Navbar.module.scss";
 import { FaBell, FaQuestionCircle, FaHome } from "react-icons/fa";
 import LoginModal from "../pages/LoginModal";
@@ -9,7 +9,7 @@ import { logout } from "../Config/AuthService";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const {setIsLoggedIn, isLoggedIn} = useAuth(); // Accessing login state from AuthContext
+  const {setIsLoggedIn, isLoggedIn, currentUser} = useAuth(); // Accessing login state from AuthContext
   console.log("isLoggedIn", isLoggedIn);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -17,12 +17,14 @@ const Navbar = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState(false); // Tracks login state
 
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
+  const updateCurrentTime = useCallback(() => {
+    setCurrentTime(new Date());
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(updateCurrentTime, 1000);
+    return () => clearInterval(interval);
+  }, [updateCurrentTime]);
 
   const handleBookingClick = () => {
     if (isLoggedIn) {
@@ -59,8 +61,11 @@ const Navbar = () => {
           <FaQuestionCircle className={styles.icon} title="Help & Support" />
 
           {/* Authentication Buttons */}
-          {isLoggedIn ? (
-            <button className={styles.authButton} onClick={handleLogout}>LOGOUT</button>
+          {currentUser ? (
+            <div>
+              <p>Welcome {currentUser.displayName}</p>
+              <button className={styles.authButton} onClick={handleLogout}>LOGOUT</button>
+            </div>
           ) : (
             <>
               <button className={styles.authButton} onClick={() => setIsLoginOpen(true)}>LOGIN</button>

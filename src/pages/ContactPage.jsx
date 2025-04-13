@@ -1,9 +1,17 @@
-import React from 'react';
-import styles from '../Styles/ContactPage.module.scss';
+import React from "react";
+import styles from "../Styles/ContactPage.module.scss";
+import { useNavigate } from "react-router-dom";
 
 function ContactPage() {
+  const navigate = useNavigate();
   return (
     <div className={styles.contactContainer}>
+      <button
+        onClick={() => navigate("/test", { replace: true })}
+        style={{ color: "red", backgroundColor: "yellow" }}
+      >
+        Test
+      </button>
       <div className={styles.contactContent}>
         <h2>Contact Us</h2>
         <div className={styles.contactInfo}>

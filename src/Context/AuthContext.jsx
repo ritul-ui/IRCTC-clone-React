@@ -27,7 +27,10 @@ export const AuthProvider = ({ children }) => {
     });
 
     // Cleanup subscription on unmount
-    return unsubscribe;
+     return () => {
+      console.log("Unsubscribing from auth state changes s");
+      unsubscribe();
+    }
   }, []);
 
   const value = {

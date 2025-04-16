@@ -39,6 +39,14 @@ const Navbar = () => {
         setIsLoggedIn(false); // Update the login state in AuthContext
   }
 
+  const handleTrainSearchClick = () => {
+    if (isLoggedIn) {
+      navigate("/Trainlist"); // Redirect to train search page if logged in
+    } else {
+      setIsLoginOpen(true); // Open login modal if not logged in
+    }
+  }
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -55,6 +63,12 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div className={styles.navLinks}>
           <span className={styles.navLink} onClick={handleBookingClick}>BOOKINGS</span>
+          <span 
+             className={styles.navLink} 
+             onClick={handleTrainSearchClick}
+           >
+             TRAIN SEARCH
+           </span>
           <span className={styles.navLink} onClick={() => navigate("/contact")}>CONTACT US</span>
           <span>{currentTime.toLocaleDateString()} [{currentTime.toLocaleTimeString()}]</span>
           <FaBell className={styles.icon} title="Notifications" />
@@ -63,7 +77,7 @@ const Navbar = () => {
           {/* Authentication Buttons */}
           {currentUser ? (
             <div>
-              <p>Welcome {currentUser.displayName}</p>
+              <p>Welcome {currentUser.displayName || "User"}</p>
               <button className={styles.authButton} onClick={handleLogout}>LOGOUT</button>
             </div>
           ) : (

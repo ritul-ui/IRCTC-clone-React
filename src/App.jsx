@@ -10,6 +10,7 @@ import styles from "./Styles/App.module.scss";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { AuthProvider } from "./Context/AuthContext";
 import Test from "./Components/Test";
+import TrainSearchResults from "./pages/TrainSearchResult";
 
 
 // Component to conditionally render content based on route
@@ -35,6 +36,7 @@ const RouteContentManager = () => {
         } 
         />
         <Route path="/test" element={<Test />} />
+        <Route path="/Trainlist" element={<TrainSearchResults />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route 
           path="/login" 

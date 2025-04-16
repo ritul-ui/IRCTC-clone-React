@@ -1,1 +1,1 @@
-In this project I have implemented react-slick carousel.
+In this project I have implemented react-slick carousel. Also, implemented firebase authentication using google firestore database. Also created global Context to pass data to components using Authprovider.

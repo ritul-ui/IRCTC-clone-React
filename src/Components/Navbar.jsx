@@ -41,7 +41,7 @@ const Navbar = () => {
 
   const handleTrainSearchClick = () => {
     if (isLoggedIn) {
-      navigate("/Trainlist"); // Redirect to train search page if logged in
+      navigate("/train-search"); // Redirect to train search page if logged in
     } else {
       setIsLoginOpen(true); // Open login modal if not logged in
     }

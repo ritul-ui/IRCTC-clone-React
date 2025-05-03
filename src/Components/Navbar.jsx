@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const handleBookingClick = () => {
     if (isLoggedIn) {
-      navigate("/booking"); // Redirect to booking page if logged in
+      navigate("/booking-history"); // Redirect to booking page if logged in
     } else {
       setIsLoginOpen(true); // Open login modal if not logged in
     }

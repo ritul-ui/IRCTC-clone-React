@@ -13,6 +13,11 @@ import Test from "./Components/Test";
 import TrainSearchResults from "./pages/TrainSearchResult";
 import TrainDetails from "./pages/TrainDetails";
 import BookingConfirmation from "./pages/BookingConfirmationPage";
+// import BookingHistoryPage from "./pages/BookingHistoryPage";
+import BookingHistory from "./pages/BookingHistory";
+import DebouncedComponent from "./Components/DebouncedComponent";
+import UseMemoExample from "./Components/UseMemoExample";
+import UseCallbackWrapper from "./Components/UseCallbackWrapper";
 
 
 // Component to conditionally render content based on route
@@ -39,11 +44,24 @@ const RouteContentManager = () => {
           </ProtectedRoute>
         } 
         />
+        <Route 
+          path="/booking-history" 
+          element={
+          <ProtectedRoute>
+          <BookingHistory />
+          </ProtectedRoute>
+          
+        } 
+        />
         <Route path="/test" element={<Test />} />
         <Route path="/train-search" element={<TrainSearchResults />} />
         <Route path="/train-details/:train_number" element={<TrainDetails />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+        
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/debouncing" element={<DebouncedComponent />} />
+         <Route path="/usememo" element={<UseMemoExample />} />
+         <Route path="/usecallback" element={<UseCallbackWrapper />} />
         <Route 
           path="/login" 
           element={

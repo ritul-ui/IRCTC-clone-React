@@ -117,6 +117,7 @@ const TrainSearchResults = () => {
     if (trains.length === 0) return;
 
     let filtered = [...trains];
+    console.log("trains>>", trains);
 
     // Filter by from and to stations if provided
     if (searchParams.from && searchParams.to) {
@@ -197,7 +198,7 @@ const TrainSearchResults = () => {
     }
 
     setFilteredTrains(filtered);
-  }, [searchParams, filters]); // Added filters to dependencies
+  }, [trains, searchParams, filters]); // Added filters to dependencies
 
   // Use filtered trains if search params or filters are active, otherwise show all trains
   const displayTrains =
@@ -209,6 +210,8 @@ const TrainSearchResults = () => {
     )
       ? filteredTrains
       : trains;
+
+      console.log("display", displayTrains);
 
   return (
     <>
@@ -304,8 +307,8 @@ const TrainSearchResults = () => {
               No trains found for this route.
             </div>
           ) : (
-            displayTrains.map((train) => (
-              <div key={train.train_number} className={styles.trainCard}>
+            displayTrains.map((train, i) => (
+              <div key={i} className={styles.trainCard}>
                 <div className={styles.trainHeader}>
                   <span className={styles.trainName}>
                     {train.train_name} ({train.train_number})

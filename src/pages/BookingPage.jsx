@@ -82,6 +82,7 @@ function BookingPage() {
   };
 
   const updatePassenger = (index, field, value) => {
+    console.log("update")
     const updatedPassengers = [...passengers];
     updatedPassengers[index][field] = value;
     setPassengers(updatedPassengers);

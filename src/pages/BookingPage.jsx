@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
-import styles from "../styles/BookingPage.module.scss";
+import styles from "../Styles/BookingPage.module.scss";
 
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../Config/FirebaseConfig";

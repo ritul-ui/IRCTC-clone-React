@@ -6,7 +6,7 @@ import {
   FaSuitcase,
   FaTrain,
 } from "react-icons/fa";
-import styles from "../styles/Home.module.scss";
+import styles from "../Styles/Home.module.scss";
 import trainImage from "../assets/train1.jpg";
 
 const Home = () => {

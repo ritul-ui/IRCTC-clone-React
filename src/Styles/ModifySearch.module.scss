@@ -44,3 +44,35 @@
     background: rgb(246, 143, 46);
     /* Darker blue on hover */
 }
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .searchForm {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+  
+    .searchForm h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  
+    .searchForm form {
+      flex-direction: column;
+      gap: 10px;
+      align-items: stretch;
+    }
+  
+    .searchForm input,
+    .searchForm button {
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .searchForm button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }

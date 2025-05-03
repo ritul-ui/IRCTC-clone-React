@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import styles from "../Styles/BookingHistory.module.scss";
 import { db } from "../Config/FirebaseConfig";
 import { useAuth } from "../Context/AuthContext"; // Assuming you have an AuthContext to get the current user
 
@@ -41,12 +42,12 @@ function BookingHistory() {
   }, []); // Empty dependency array ensures this runs only once
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Booking History</h1>
-      <div className="booking-history">
+      <div className={styles.bookingHistory}>
         {bookings.length > 0 ? (
           bookings.map((booking) => (
-            <div key={booking.id} className="booking-card">
+            <div key={booking.id} className={styles.bookingCard}>
               <h2>{booking.trainDetails?.trainName}</h2>
               <p>Booking ID: {booking.id}</p>
               <p>From: {booking.trainDetails?.from}</p>
@@ -55,7 +56,7 @@ function BookingHistory() {
             </div>
           ))
         ) : (
-          <p>No bookings found.</p>
+          <p className={styles.noBookings}>No bookings found.</p>
         )}
       </div>
     </div>

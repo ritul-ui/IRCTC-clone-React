@@ -134,21 +134,48 @@
     }
   }
   
-  @media (max-width: 768px) {
-    .inputGroup {
-      flex-direction: column;
-    }
-  
-    .swapButton {
-      transform: rotate(90deg);
-    }
-  
-    .checkboxGroup {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    .buttonGroup {
-      flex-direction: column;
-    }
-  } 
+/* Mobile View */
+@media (max-width: 768px) {
+  .inputGroup {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .checkboxGroup {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .container {
+    padding: 10px;
+    height: auto;
+    margin-bottom: 0;
+  }
+  .searchForm {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+  .searchForm h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .searchForm form {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .searchForm input,
+  .searchForm button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .searchForm button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

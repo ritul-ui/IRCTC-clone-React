@@ -114,3 +114,90 @@
   padding: 5px 10px;
   margin-right: 5px;
 }
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .filterSection {
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 0;
+    padding: 10px;
+  }
+
+  .filterColumn {
+    margin-bottom: 15px;
+  }
+
+  .checkboxLabel {
+    font-size: 14px;
+  }
+
+  .trainList {
+    width: 100%;
+  }
+
+  .trainCard {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .trainHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .trainName {
+    font-size: 16px;
+  }
+
+  .trainSchedule {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .trainDetails {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .timeInfo {
+    font-size: 14px;
+  }
+
+  .durationInfo {
+    font-size: 12px;
+  }
+
+  .classInfo {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bookNowButton,
+  .otherDatesButton {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .availableButton,
+  .waitlistButton {
+    font-size: 12px;
+    padding: 5px 8px;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+}

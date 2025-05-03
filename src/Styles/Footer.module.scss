@@ -60,3 +60,39 @@
         }
     }
 }
+
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .footer {
+      padding: 15px;
+      text-align: center;
+    }
+  
+    .socialMedia {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+  
+    .icons {
+      gap: 8px;
+      margin-top: 8px;
+    }
+  
+    .icon {
+      font-size: 20px;
+    }
+  
+    .footerLinks {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 0 5%;
+      margin-top: 15px;
+    }
+  
+    .footerLinks h4 {
+      font-size: 12px;
+      text-align: center;
+    }
+  }

@@ -194,3 +194,112 @@
         width: 100%;
     }
 }
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .confirmationCard {
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+  
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .bookingId {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+  
+    .section {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+    }
+  
+    .section h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  
+    .trainInfo {
+      padding: 10px;
+    }
+  
+    .trainName {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+  
+    .journeyDetails {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .stationName {
+      font-size: 14px;
+    }
+  
+    .time {
+      font-size: 12px;
+    }
+  
+    .arrow {
+      font-size: 18px;
+      transform: rotate(90deg);
+      margin: 5px 0;
+    }
+  
+    .additionalInfo {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .passengerTable {
+      font-size: 12px;
+    }
+  
+    .passengerTable th,
+    .passengerTable td {
+      padding: 8px;
+    }
+  
+    .contactInfo {
+      gap: 5px;
+    }
+  
+    .paymentInfo {
+      padding: 10px;
+    }
+  
+    .paymentRow {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  
+    .totalRow {
+      font-size: 16px;
+    }
+  
+    .actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .button {
+      width: 100%;
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .homeButton {
+      font-size: 14px;
+    }
+  }

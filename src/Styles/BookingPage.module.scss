@@ -133,19 +133,90 @@
     background-color: #003d7a;
 }
 
-/* Adding responsiveness for smaller screens */
-
+/* Mobile View */
 @media (max-width: 768px) {
-    .detailsGrid {
-        grid-template-columns: 1fr;
+    .container {
+      padding: 10px;
     }
-
+  
+    h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+  
+    .trainSummary {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .detailsGrid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  
+    .passengerSection,
+    .contactSection,
+    .paymentSection {
+      padding: 15px;
+      font-size: 14px;
+    }
+  
+    .passengerCard {
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .passengerCard h4 {
+      font-size: 16px;
+    }
+  
+    .inputGroup label {
+      font-size: 14px;
+    }
+  
     .inputGroup input,
     .inputGroup select {
-        font-size: 16px;
+      font-size: 14px;
+      padding: 8px;
     }
-
+  
+    .addButton,
+    .removeButton {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  
+    .removeButton {
+      right: 10px;
+      top: 10px;
+    }
+  
+    .paymentDetails {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .paymentDetails div {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  
+    .totalAmount {
+      font-size: 16px;
+    }
+  
+    .termsSection {
+      font-size: 14px;
+    }
+  
+    .buttonGroup {
+      margin-top: 15px;
+    }
+  
     .payButton {
-        width: 100%;
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
     }
-}
+  }

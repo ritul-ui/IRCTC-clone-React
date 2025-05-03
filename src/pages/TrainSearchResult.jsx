@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 import styles from "../Styles/TrainSearchResults.module.scss";
-import ModifySearch from "../components/ModifySearch";
+import ModifySearch from "../Components/ModifySearch";
 
 const API_URL = "https://mocki.io/v1/41189c39-e55b-4b7d-a236-529edfb9d3af";
 
